@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "833818699835",
+    "project_id": "eperimetry",
+    "storage_bucket": "eperimetry.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833818699835:android:c64d4340d492208e34941e",
+        "android_client_info": {
+          "package_name": "com.example.eperimetry_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833818699835-fpc3teddgo58mhru144fecngfql86beg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eperimetry_v1",
+            "certificate_hash": "085735e187a80ef62a62045420b13223c67b6864"
+          }
+        },
+        {
+          "client_id": "833818699835-tqbhsmo4dsbnbuo3oeup281dt78t87f4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSu2C3YbORNAJPt6UXjdRGZgK9-XBcF1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833818699835-tqbhsmo4dsbnbuo3oeup281dt78t87f4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
