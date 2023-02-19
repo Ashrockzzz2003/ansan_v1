@@ -1,4 +1,5 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,11 +42,11 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
         actions: [
           IconButton(
             onPressed: () async {
-              ap.userSignOut().then((value) => Navigator.push(
+              ap.userSignOut().then((value) => Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const WelcomeScreen()
-                ),
+                ), (route) => false,
               ),
               );
             },
@@ -230,10 +231,13 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               const SizedBox(height: 24,),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                     onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => const EditProfileScreen()
+                      ))
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
@@ -252,7 +256,7 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                       child: Text(
-                        "Reports",
+                        "View Reports",
                         style: GoogleFonts.raleway(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -261,6 +265,77 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 24,),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.onError,
+                  ),
+                  onPressed: () => {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(
+                              "Confirm Delete",
+                              style: GoogleFonts.raleway(),
+                            ),
+                            content: Text(
+                              "Are you sure you want to delete your account?",
+                              style: GoogleFonts.raleway(),
+                            ),
+                            actions: [
+                              FilledButton.tonal(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    "Cancel",
+                                    style: GoogleFonts.raleway(),
+                                  )
+                              ),
+                              FilledButton.tonal(
+                                  onPressed: () {
+                                    setState(() {
+                                      ap.deleteUserDataFromFirebase(
+                                        context: context,
+                                        userModel: ap.userModel,
+                                        onSuccess: () {
+                                          ap.userSignOut();
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => const WelcomeScreen()
+                                            ), (route) => false,
+                                          );
+                                        },
+                                      );
+                                    });
+                                  },
+                                  child: Text(
+                                    "Delete",
+                                    style: GoogleFonts.raleway(),
+                                  )
+                              )
+                            ],
+                          );
+                        }
+                    )
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                    child: Text(
+                      "Delete Account",
+                      style: GoogleFonts.raleway(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).colorScheme.onErrorContainer,
+                      ),
+                    ),
+                  ),
+                ),
               )
             ],
           ),

@@ -32,8 +32,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         offset: phoneController.text.length,
       )
     );
+    final isLoading = Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
-      body: SafeArea(
+      body: isLoading==true ? const CircularProgressIndicator():SafeArea(
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16.0),

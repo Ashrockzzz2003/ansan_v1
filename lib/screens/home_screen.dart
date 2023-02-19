@@ -28,16 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context) => const ProfileScreeen()
             ));
           },
-          icon: Icon(Icons.person_sharp),
+          icon: const Icon(Icons.person_sharp),
         ),
         actions: [
           IconButton(
             onPressed: () async {
-              ap.userSignOut().then((value) => Navigator.push(
+              ap.userSignOut().then((value) => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const WelcomeScreen()
                     ),
+                  (route) => false
                   ),
               );
             },

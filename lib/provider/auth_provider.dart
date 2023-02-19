@@ -43,6 +43,7 @@ class AuthProvider extends ChangeNotifier {
 
   void signInWithPhone(BuildContext context, String phoneNumber) async {
     try {
+      _isLoading = true;
       await _firebaseAuth.verifyPhoneNumber(
           phoneNumber: phoneNumber,
           verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
@@ -52,11 +53,14 @@ class AuthProvider extends ChangeNotifier {
             throw Exception(error.message);
           },
           codeSent: (verificationID, forceResendingToken) {
+            _isLoading = false;
             Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(verificationID: verificationID,)));
           },
           codeAutoRetrievalTimeout:(verificationID) {},
       );
     } on FirebaseAuthException catch(e) {
+      _isLoading = false;
+      notifyListeners();
       showToast(context, e.message.toString());
     }
   }
@@ -154,6 +158,28 @@ class AuthProvider extends ChangeNotifier {
           .collection("users")
           .doc(_uID)
           .update(userModel.toMap()).then((value) {
+        onSuccess();
+        _isLoading = false;
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch(e) {
+      showToast(context, e.toString());
+    }
+  }
+
+  void deleteUserDataFromFirebase({
+    required BuildContext context,
+    required UserModel userModel,
+    required Function onSuccess,
+  }) async {
+    _isLoading = true;
+    notifyListeners();
+    try{
+      // Uploading to FireStore
+      await _firebaseFirestore
+          .collection("users")
+          .doc(_uID)
+          .delete().then((value) {
         onSuccess();
         _isLoading = false;
         notifyListeners();
