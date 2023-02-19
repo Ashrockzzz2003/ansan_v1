@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eperimetry_v1/model/user_model.dart';
 import 'package:eperimetry_v1/screens/otp_screen.dart';
-import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:eperimetry_v1/util/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +86,7 @@ class AuthProvider extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
 
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       _isLoading = false;
       notifyListeners();
       showToast(context, "Invalid OTP!");
@@ -128,6 +127,33 @@ class AuthProvider extends ChangeNotifier {
           .collection("users")
           .doc(_uID)
           .set(userModel.toMap()).then((value) {
+        onSuccess();
+        _isLoading = false;
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch(e) {
+      showToast(context, e.toString());
+    }
+  }
+
+  void updateUserDataToFirebase({
+    required BuildContext context,
+    required UserModel userModel,
+    required Function onSuccess,
+  }) async {
+    _isLoading = true;
+    notifyListeners();
+    try{
+      userModel.createdAt = DateTime.now().millisecondsSinceEpoch.toString();
+      userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
+      userModel.uID = _firebaseAuth.currentUser!.phoneNumber!;
+      _userModel = userModel;
+
+      // Uploading to FireStore
+      await _firebaseFirestore
+          .collection("users")
+          .doc(_uID)
+          .update(userModel.toMap()).then((value) {
         onSuccess();
         _isLoading = false;
         notifyListeners();

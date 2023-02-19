@@ -3,6 +3,7 @@ import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:eperimetry_v1/util/helper_functions.dart';
 
 class ProfileScreeen extends StatefulWidget {
   const ProfileScreeen({Key? key}) : super(key: key);
@@ -176,10 +177,10 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               TextFormField(
                 enabled: false,
                 style: GoogleFonts.raleway(),
-                controller: occupationController,
+                controller: ageController,
                 decoration: InputDecoration(
-                  labelText: "Occupation",
-                  prefixIcon: const Icon(Icons.factory_outlined),
+                  labelText: "Age",
+                  prefixIcon: const Icon(Icons.date_range),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
@@ -266,32 +267,5 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
         ),
       ),
     );
-  }
-
-  String? convertToTitleCase(String? text) {
-    if (text == null) {
-      return null;
-    }
-
-    if (text.length <= 1) {
-      return text.toUpperCase();
-    }
-
-    // Split string into multiple words
-    final List<String> words = text.split(' ');
-
-    // Capitalize first letter of each words
-    final capitalizedWords = words.map((word) {
-      if (word.trim().isNotEmpty) {
-        final String firstLetter = word.trim().substring(0, 1).toUpperCase();
-        final String remainingLetters = word.trim().substring(1);
-
-        return '$firstLetter$remainingLetters';
-      }
-      return '';
-    });
-
-    // Join/Merge all words back to one String
-    return capitalizedWords.join(' ');
   }
 }
