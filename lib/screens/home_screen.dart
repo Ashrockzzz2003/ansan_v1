@@ -1,4 +1,5 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry_v1/screens/profile_screen.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Dashboard", style: GoogleFonts.raleway(),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => const ProfileScreeen()
+            ));
+          },
+          icon: Icon(Icons.person_sharp),
+        ),
         actions: [
           IconButton(
             onPressed: () async {

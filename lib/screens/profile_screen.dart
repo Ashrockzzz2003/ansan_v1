@@ -1,0 +1,297 @@
+import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry_v1/screens/welcome_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+class ProfileScreeen extends StatefulWidget {
+  const ProfileScreeen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreeen> createState() => _ProfileScreeenState();
+}
+
+class _ProfileScreeenState extends State<ProfileScreeen> {
+
+  final nameController = TextEditingController();
+  final occupationController = TextEditingController();
+  final addressController = TextEditingController();
+  final phoneController = TextEditingController();
+  final ageController = TextEditingController();
+  final genderController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+
+    setState(() {
+      nameController.text = convertToTitleCase(ap.userModel.userName)!;
+      occupationController.text = convertToTitleCase(ap.userModel.occupation)!;
+      addressController.text = convertToTitleCase(ap.userModel.address)!;
+      phoneController.text = ap.userModel.phoneNumber;
+      ageController.text = convertToTitleCase(ap.userModel.age)!;
+      genderController.text = convertToTitleCase(ap.userModel.gender)!;
+    });
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Profile", style: GoogleFonts.raleway(),),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              ap.userSignOut().then((value) => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const WelcomeScreen()
+                ),
+              ),
+              );
+            },
+            icon: const Icon(Icons.exit_to_app),
+          )
+        ],
+      ),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/image6.webp",
+                width: 240,
+              ),
+              TextFormField(
+                enabled: false,
+                style: GoogleFonts.raleway(),
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: "Full Name",
+                  prefixIcon: const Icon(Icons.person),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+                ),
+              ),
+              const SizedBox(height: 24,),
+              TextFormField(
+                enabled: false,
+                style: GoogleFonts.raleway(),
+                controller: occupationController,
+                decoration: InputDecoration(
+                  labelText: "Occupation",
+                  prefixIcon: const Icon(Icons.factory_outlined),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+                ),
+              ),
+              const SizedBox(height: 24,),
+              TextFormField(
+                enabled: false,
+                style: GoogleFonts.raleway(),
+                controller: phoneController,
+                decoration: InputDecoration(
+                  labelText: "Mobile Number",
+                  prefixIcon: const Icon(Icons.phone),
+                  suffixIcon: phoneController.text.length > 9 ? const Icon(Icons.verified_outlined) : null ,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+
+                ),
+              ),
+              const SizedBox(height: 24,),
+              TextFormField(
+                enabled: false,
+                style: GoogleFonts.raleway(),
+                controller: genderController,
+                decoration: InputDecoration(
+                  labelText: "Gender",
+                  prefixIcon: const Icon(Icons.person_pin_outlined),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+                ),
+              ),
+              const SizedBox(height: 24,),
+              TextFormField(
+                enabled: false,
+                style: GoogleFonts.raleway(),
+                controller: occupationController,
+                decoration: InputDecoration(
+                  labelText: "Occupation",
+                  prefixIcon: const Icon(Icons.factory_outlined),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+                ),
+              ),
+              const SizedBox(height: 24,),
+              TextFormField(
+                enabled: false,
+                maxLines: null,
+                style: GoogleFonts.raleway(),
+                controller: addressController,
+                decoration: InputDecoration(
+                  labelText: "Address",
+                  prefixIcon: Icon(Icons.home_filled),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                  ),
+                  labelStyle: GoogleFonts.raleway(),
+                ),
+              ),
+              const SizedBox(height: 24,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => {
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                      child: Text(
+                        "Edit Profile",
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => {
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                      child: Text(
+                        "Reports",
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  String? convertToTitleCase(String? text) {
+    if (text == null) {
+      return null;
+    }
+
+    if (text.length <= 1) {
+      return text.toUpperCase();
+    }
+
+    // Split string into multiple words
+    final List<String> words = text.split(' ');
+
+    // Capitalize first letter of each words
+    final capitalizedWords = words.map((word) {
+      if (word.trim().isNotEmpty) {
+        final String firstLetter = word.trim().substring(0, 1).toUpperCase();
+        final String remainingLetters = word.trim().substring(1);
+
+        return '$firstLetter$remainingLetters';
+      }
+      return '';
+    });
+
+    // Join/Merge all words back to one String
+    return capitalizedWords.join(' ');
+  }
+}
