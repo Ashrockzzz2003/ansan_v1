@@ -1,7 +1,6 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: "ePerimetry",
         theme: ThemeData(
             useMaterial3: true,
-            colorSchemeSeed: Colors.blue,
+            colorSchemeSeed: Colors.blueAccent,
             brightness: Brightness.dark
         ),
       ),

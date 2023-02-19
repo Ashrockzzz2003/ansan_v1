@@ -1,6 +1,7 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
 import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
 import 'package:eperimetry_v1/screens/profile_screen.dart';
+import 'package:eperimetry_v1/screens/reports_screen.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,6 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ElevatedButton(
                 onPressed: () => {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => ReportScreen()
+                  ))
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),

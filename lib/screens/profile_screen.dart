@@ -1,5 +1,6 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
 import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
+import 'package:eperimetry_v1/screens/reports_screen.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -252,6 +253,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   ),
                   ElevatedButton(
                     onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => ReportScreen()
+                      ))
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
@@ -271,7 +275,7 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.onError,
+                    // backgroundColor: Theme.of(context).colorScheme.onError,
                   ),
                   onPressed: () => {
                     showDialog(
