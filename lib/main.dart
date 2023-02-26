@@ -1,4 +1,5 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry_v1/screens/home_screen.dart';
 import 'package:eperimetry_v1/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

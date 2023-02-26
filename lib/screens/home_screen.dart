@@ -1,4 +1,5 @@
 import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry_v1/screens/about_us.dart';
 import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
 import 'package:eperimetry_v1/screens/profile_screen.dart';
 import 'package:eperimetry_v1/screens/reports_screen.dart';
@@ -46,6 +47,31 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.exit_to_app),
           )
         ],
+      ),
+      // floatingActionButtonLocation:
+      // FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.remove_red_eye_sharp),onPressed: (){},
+      //
+      // ),
+      bottomNavigationBar: BottomAppBar(
+        surfaceTintColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(onPressed: (){}, icon: Icon(Icons.home_sharp)),
+            IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye)),
+            IconButton(onPressed: (){
+              Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (context) => AboutUs()
+              ),
+              );
+          },icon: Icon(Icons.groups_3_sharp)),
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
