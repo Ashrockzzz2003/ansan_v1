@@ -1,12 +1,9 @@
-import 'package:eperimetry_v1/screens/about_us.dart';
-import 'package:eperimetry_v1/screens/collaborators.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:eperimetry_v1/screens/home_screen.dart';
-
-
 
 class Developers extends StatelessWidget {
+  const Developers({super.key});
+
   @override
   Widget build(BuildContext context)
   {
@@ -16,7 +13,7 @@ class Developers extends StatelessWidget {
             onPressed: (){
               Navigator.pop(context);
             },
-            icon: Icon(Icons.keyboard_return_sharp),
+            icon: const Icon(Icons.keyboard_return_sharp),
           ),
         ),
         body: ListView(
@@ -40,9 +37,9 @@ class Developers extends StatelessWidget {
               highlightColor: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               splashColor:   Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               child:Card (
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 elevation: 16,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   //side:  BorderSide(color: Colors.white70,width: 2),
                     borderRadius: BorderRadius.all(Radius.circular(24))
                 ),
@@ -50,7 +47,7 @@ class Developers extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: ListTile(
                         leading: Image.asset('assets/image2.webp'),
                         title: Text("Ashwin Narayanan S",style: GoogleFonts.raleway(
@@ -82,17 +79,16 @@ class Developers extends StatelessWidget {
               highlightColor: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               splashColor:   Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               child:Card (
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 elevation: 16,
-                shape: RoundedRectangleBorder(
-                  //side:  BorderSide(color: Colors.white70,width: 2),
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(24))
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: ListTile(
                         leading: Image.asset('assets/image2.webp'),
                         title: Text("Lalith Guptha B",style: GoogleFonts.raleway(
@@ -123,17 +119,16 @@ class Developers extends StatelessWidget {
               highlightColor: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               splashColor:   Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               child:Card (
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 elevation: 16,
-                shape: RoundedRectangleBorder(
-                  //side:  BorderSide(color: Colors.white70,width: 2),
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(24))
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: ListTile(
                         leading: Image.asset('assets/image2.webp'),
                         title: Text("Aravind S",style: GoogleFonts.raleway(
@@ -164,9 +159,9 @@ class Developers extends StatelessWidget {
               highlightColor: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               splashColor:   Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.1),
               child:Card (
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 elevation: 16,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   //side:  BorderSide(color: Colors.white70,width: 2),
                     borderRadius: BorderRadius.all(Radius.circular(24))
                 ),
@@ -174,7 +169,7 @@ class Developers extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: ListTile(
                         leading: Image.asset('assets/image2.webp'),
                         title: Text("Abirami S",style: GoogleFonts.raleway(
