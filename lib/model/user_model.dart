@@ -1,22 +1,22 @@
 class UserModel {
-   String userName;
-   String occupation;
-   String phoneNumber;
-   String age;
-   String gender;
-   String address;
-   String uID;
-   String createdAt;
+  String userName;
+  String occupation;
+  String phoneNumber;
+  String age;
+  String gender;
+  String address;
+  String uID;
+  String createdAt;
 
   UserModel({
-      required this.userName,
-      required this.occupation,
-      required this.phoneNumber,
-      required this.age,
-      required this.gender,
-      required this.address,
-      required this.createdAt,
-      required this.uID,
+    required this.userName,
+    required this.occupation,
+    required this.phoneNumber,
+    required this.age,
+    required this.gender,
+    required this.address,
+    required this.createdAt,
+    required this.uID,
   });
 
   // From Map
@@ -46,5 +46,4 @@ class UserModel {
       "createdAt": createdAt,
     };
   }
-
 }

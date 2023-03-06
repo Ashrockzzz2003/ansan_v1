@@ -15,7 +15,6 @@ class ProfileScreeen extends StatefulWidget {
 }
 
 class _ProfileScreeenState extends State<ProfileScreeen> {
-
   final nameController = TextEditingController();
   final occupationController = TextEditingController();
   final addressController = TextEditingController();
@@ -39,17 +38,21 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Profile", style: GoogleFonts.raleway(),),
+        title: Text(
+          "Profile",
+          style: GoogleFonts.raleway(),
+        ),
         actions: [
           IconButton(
             onPressed: () async {
-              ap.userSignOut().then((value) => Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const WelcomeScreen()
-                ), (route) => false,
-              ),
-              );
+              ap.userSignOut().then(
+                    (value) => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const WelcomeScreen()),
+                      (route) => false,
+                    ),
+                  );
             },
             icon: const Icon(Icons.exit_to_app),
           )
@@ -75,24 +78,32 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   prefixIcon: const Icon(Icons.person),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               TextFormField(
                 enabled: false,
                 style: GoogleFonts.raleway(),
@@ -102,24 +113,32 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   prefixIcon: const Icon(Icons.factory_outlined),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               TextFormField(
                 enabled: false,
                 style: GoogleFonts.raleway(),
@@ -127,28 +146,37 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                 decoration: InputDecoration(
                   labelText: "Mobile Number",
                   prefixIcon: const Icon(Icons.phone),
-                  suffixIcon: phoneController.text.length > 9 ? const Icon(Icons.verified_outlined) : null ,
+                  suffixIcon: phoneController.text.length > 9
+                      ? const Icon(Icons.verified_outlined)
+                      : null,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
-
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               TextFormField(
                 enabled: false,
                 style: GoogleFonts.raleway(),
@@ -158,24 +186,32 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   prefixIcon: const Icon(Icons.person_pin_outlined),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               TextFormField(
                 enabled: false,
                 style: GoogleFonts.raleway(),
@@ -185,24 +221,32 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   prefixIcon: const Icon(Icons.date_range),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               TextFormField(
                 enabled: false,
                 maxLines: null,
@@ -213,35 +257,45 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   prefixIcon: Icon(Icons.home_filled),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    borderSide: BorderSide(
+                        color:
+                            Theme.of(context).colorScheme.onPrimaryContainer),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onErrorContainer),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.onErrorContainer),
                   ),
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                     onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const EditProfileScreen()
-                      ))
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EditProfileScreen()))
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 8.0),
                       child: Text(
                         "Edit Profile",
                         style: GoogleFonts.raleway(
@@ -253,12 +307,14 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   ),
                   ElevatedButton(
                     onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => ReportScreen()
-                      ))
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReportScreen()))
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 8.0),
                       child: Text(
                         "View Reports",
                         style: GoogleFonts.raleway(
@@ -270,13 +326,15 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    // backgroundColor: Theme.of(context).colorScheme.onError,
-                  ),
+                      // backgroundColor: Theme.of(context).colorScheme.onError,
+                      ),
                   onPressed: () => {
                     showDialog(
                         context: context,
@@ -298,8 +356,7 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                                   child: Text(
                                     "Cancel",
                                     style: GoogleFonts.raleway(),
-                                  )
-                              ),
+                                  )),
                               FilledButton.tonal(
                                   onPressed: () {
                                     setState(() {
@@ -311,8 +368,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                                           Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => const WelcomeScreen()
-                                            ), (route) => false,
+                                                builder: (context) =>
+                                                    const WelcomeScreen()),
+                                            (route) => false,
                                           );
                                         },
                                       );
@@ -321,15 +379,14 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                                   child: Text(
                                     "Delete",
                                     style: GoogleFonts.raleway(),
-                                  )
-                              )
+                                  ))
                             ],
                           );
-                        }
-                    )
+                        })
                   },
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 8.0),
                     child: Text(
                       "Delete Account",
                       style: GoogleFonts.raleway(

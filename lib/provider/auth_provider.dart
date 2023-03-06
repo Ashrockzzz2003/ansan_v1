@@ -45,20 +45,25 @@ class AuthProvider extends ChangeNotifier {
     try {
       _isLoading = true;
       await _firebaseAuth.verifyPhoneNumber(
-          phoneNumber: phoneNumber,
-          verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
-            await _firebaseAuth.signInWithCredential(phoneAuthCredential);
-          },
-          verificationFailed: (error) {
-            throw Exception(error.message);
-          },
-          codeSent: (verificationID, forceResendingToken) {
-            _isLoading = false;
-            Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(verificationID: verificationID,)));
-          },
-          codeAutoRetrievalTimeout:(verificationID) {},
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
+          await _firebaseAuth.signInWithCredential(phoneAuthCredential);
+        },
+        verificationFailed: (error) {
+          throw Exception(error.message);
+        },
+        codeSent: (verificationID, forceResendingToken) {
+          _isLoading = false;
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => OTPScreen(
+                        verificationID: verificationID,
+                      )));
+        },
+        codeAutoRetrievalTimeout: (verificationID) {},
       );
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       _isLoading = false;
       notifyListeners();
       showToast(context, e.message.toString());
@@ -74,14 +79,14 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    try{
+    try {
       PhoneAuthCredential creds = PhoneAuthProvider.credential(
-          verificationId: verificationID,
-          smsCode: userOTP,
+        verificationId: verificationID,
+        smsCode: userOTP,
       );
 
       User? user = (await _firebaseAuth.signInWithCredential(creds)).user!;
-      if(user != null) {
+      if (user != null) {
         // Business Logic
         _uID = user.uid;
         onSuccess();
@@ -89,7 +94,6 @@ class AuthProvider extends ChangeNotifier {
 
       _isLoading = false;
       notifyListeners();
-
     } on FirebaseAuthException {
       _isLoading = false;
       notifyListeners();
@@ -99,19 +103,20 @@ class AuthProvider extends ChangeNotifier {
 
   // DB Operations
   Future<bool> checkExistingUser() async {
-    DocumentSnapshot snapshot = await _firebaseFirestore.collection("users").doc(_uID).get();
-    if(snapshot.exists) {
+    DocumentSnapshot snapshot =
+        await _firebaseFirestore.collection("users").doc(_uID).get();
+    if (snapshot.exists) {
       // print("USER EXISTS");
       return true;
-    }
-    else {
+    } else {
       // print("NEW USER");
       return false;
     }
   }
-   String? getPhoneNumber() {
+
+  String? getPhoneNumber() {
     return _firebaseAuth.currentUser?.phoneNumber;
-   }
+  }
 
   void saveUserDataToFirebase({
     required BuildContext context,
@@ -120,7 +125,7 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     _isLoading = true;
     notifyListeners();
-    try{
+    try {
       userModel.createdAt = DateTime.now().millisecondsSinceEpoch.toString();
       userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
       userModel.uID = _firebaseAuth.currentUser!.phoneNumber!;
@@ -130,12 +135,13 @@ class AuthProvider extends ChangeNotifier {
       await _firebaseFirestore
           .collection("users")
           .doc(_uID)
-          .set(userModel.toMap()).then((value) {
+          .set(userModel.toMap())
+          .then((value) {
         onSuccess();
         _isLoading = false;
         notifyListeners();
       });
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       showToast(context, e.toString());
     }
   }
@@ -147,7 +153,7 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     _isLoading = true;
     notifyListeners();
-    try{
+    try {
       userModel.createdAt = DateTime.now().millisecondsSinceEpoch.toString();
       userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
       userModel.uID = _firebaseAuth.currentUser!.phoneNumber!;
@@ -157,12 +163,13 @@ class AuthProvider extends ChangeNotifier {
       await _firebaseFirestore
           .collection("users")
           .doc(_uID)
-          .update(userModel.toMap()).then((value) {
+          .update(userModel.toMap())
+          .then((value) {
         onSuccess();
         _isLoading = false;
         notifyListeners();
       });
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       showToast(context, e.toString());
     }
   }
@@ -174,23 +181,28 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     _isLoading = true;
     notifyListeners();
-    try{
+    try {
       // Uploading to FireStore
       await _firebaseFirestore
           .collection("users")
           .doc(_uID)
-          .delete().then((value) {
+          .delete()
+          .then((value) {
         onSuccess();
         _isLoading = false;
         notifyListeners();
       });
-    } on FirebaseAuthException catch(e) {
+    } on FirebaseAuthException catch (e) {
       showToast(context, e.toString());
     }
   }
 
   Future getDataFromFireStore() async {
-    await _firebaseFirestore.collection("users").doc(_firebaseAuth.currentUser!.uid).get().then((DocumentSnapshot snapshot) {
+    await _firebaseFirestore
+        .collection("users")
+        .doc(_firebaseAuth.currentUser!.uid)
+        .get()
+        .then((DocumentSnapshot snapshot) {
       _userModel = UserModel(
           userName: snapshot["userName"],
           occupation: snapshot["occupation"],
@@ -199,8 +211,7 @@ class AuthProvider extends ChangeNotifier {
           gender: snapshot["gender"],
           address: snapshot["address"],
           createdAt: snapshot["createdAt"],
-          uID: uID
-      );
+          uID: uID);
       _uID = userModel.uID;
     });
   }
@@ -225,5 +236,9 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
     SharedPreferences s = await SharedPreferences.getInstance();
     s.clear();
+  }
+
+  void resetLoading() {
+    _isLoading = false;
   }
 }

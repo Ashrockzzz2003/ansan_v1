@@ -17,15 +17,15 @@ class _ReportScreenState extends State<ReportScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            // Add New Report, Start New Questionairre
-          },
-          label: Text (
-            "New Report",
-            style: GoogleFonts.raleway(
-              fontWeight: FontWeight.bold,
-            ),
+        onPressed: () {
+          // Add New Report, Start New Questionairre
+        },
+        label: Text(
+          "New Report",
+          style: GoogleFonts.raleway(
+            fontWeight: FontWeight.bold,
           ),
+        ),
         icon: const Icon(Icons.add),
       ),
       body: CustomScrollView(
@@ -48,8 +48,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   onPressed: () {
                     // Search for reports based on date or whatever
                   },
-                  icon: const Icon(Icons.search)
-              ),
+                  icon: const Icon(Icons.search)),
             ],
             leading: IconButton(
               onPressed: () {
@@ -58,13 +57,13 @@ class _ReportScreenState extends State<ReportScreen> {
               icon: const Icon(Icons.arrow_back),
             ),
           ),
-          
+
           // Main APP UI
           SliverToBoxAdapter(
             child: Column(
               children: [
                 Image.asset(
-                    "assets/image7.webp",
+                  "assets/image7.webp",
                   width: 200,
                 ),
                 Padding(
@@ -76,7 +75,8 @@ class _ReportScreenState extends State<ReportScreen> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                      padding:
+                          const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
                       child: Text(
                         "See the unseen with our app - Detect glaucoma early through retina analysis",
                         style: GoogleFonts.raleway(
@@ -90,23 +90,24 @@ class _ReportScreenState extends State<ReportScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                   child: Container(
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onError,
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Text(
-                        "No reports found.\nAdd your retina image and generate a glaucoma report by clicking on 'New Report'.",
-                        style: GoogleFonts.raleway(
-                          fontSize: 16,
-                          color: Theme.of(context).colorScheme.onErrorContainer,
-                        ),
-                        textAlign: TextAlign.center,
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onError,
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
-                    )
-                  ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                        child: Text(
+                          "No reports found.\nAdd your retina image and generate a glaucoma report by clicking on 'New Report'.",
+                          style: GoogleFonts.raleway(
+                            fontSize: 16,
+                            color:
+                                Theme.of(context).colorScheme.onErrorContainer,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )),
                 ),
               ],
             ),
