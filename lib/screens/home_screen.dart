@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Collaborator()));
+                    MaterialPageRoute(builder: (context) => const Collaborator()));
               },
               child: Card(
                 margin: const EdgeInsets.all(16),
@@ -249,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Developers()));
+                    MaterialPageRoute(builder: (context) => const Developers()));
               },
               child: Card(
                 margin: const EdgeInsets.all(16),

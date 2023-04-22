@@ -1,3 +1,4 @@
+import 'package:eperimetry_v1/screens/report_form.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,6 +20,10 @@ class _ReportScreenState extends State<ReportScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           // Add New Report, Start New Questionairre
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ReportFormScreen()));
         },
         label: Text(
           "New Report",
