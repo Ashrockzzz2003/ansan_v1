@@ -12,7 +12,7 @@ class Collaborator extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.keyboard_return_sharp),
+            icon: const Icon(Icons.arrow_back),
           ),
         ),
         body: ListView(
