@@ -17,15 +17,12 @@ class Authors extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 0, 0),
-              child: Text(
-                "Authors",
-                textAlign: TextAlign.left,
-                style: GoogleFonts.raleway(
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.w500, fontSize: 32)),
-              ),
+            Text(
+              "Authors",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.raleway(
+                  textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 32)),
             ),
             InkWell(
               onTap: () {},
@@ -59,11 +56,13 @@ class Authors extends StatelessWidget {
                                   fontWeight: FontWeight.w500, fontSize: 24)),
                           const Padding(padding: EdgeInsets.only(top: 16)),
                           Chip(
+                            backgroundColor: Theme.of(context).colorScheme.primary,
                             elevation: 24,
                             label: Text(
                               "Assistant Professor",
                               style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w300, fontSize: 16),
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                  fontWeight: FontWeight.w500, fontSize: 16),
                             ),
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
@@ -114,11 +113,13 @@ class Authors extends StatelessWidget {
                                   fontWeight: FontWeight.w500, fontSize: 24)),
                           const Padding(padding: EdgeInsets.only(top: 16)),
                           Chip(
+                            backgroundColor: Theme.of(context).colorScheme.primary,
                             elevation: 24,
                             label: Text(
                               "PhD Scholar",
                               style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w300, fontSize: 16),
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                  fontWeight: FontWeight.w500, fontSize: 16),
                             ),
                             shape: const RoundedRectangleBorder(
                                 borderRadius:

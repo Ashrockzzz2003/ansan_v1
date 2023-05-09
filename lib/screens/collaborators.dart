@@ -17,15 +17,12 @@ class Collaborator extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 24, 0, 0),
-              child: Text(
-                "Collaborators",
-                textAlign: TextAlign.left,
-                style: GoogleFonts.raleway(
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.w500, fontSize: 32)),
-              ),
+            Text(
+              "Collaborators",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.raleway(
+                  textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 32)),
             ),
             Card(
               margin: const EdgeInsets.all(24),
@@ -50,11 +47,16 @@ class Collaborator extends StatelessWidget {
                                 fontWeight: FontWeight.w500, fontSize: 24)),
                         const Padding(padding: EdgeInsets.only(top: 8)),
                         Chip(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           elevation: 24,
                           label: Text(
                             "MS DNB",
                             style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w400, fontSize: 16),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                           ),
                           shape: const RoundedRectangleBorder(
                               borderRadius:
@@ -69,10 +71,17 @@ class Collaborator extends StatelessWidget {
                         const SizedBox(
                           height: 16,
                         ),
-                        Center(
-                          child: Text("Ponnamal Duraisamy Eye Hospital",
-                              style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w400, fontSize: 16)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.location_city_sharp),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text("Ponnamal Duraisamy Eye Hospital",
+                                style: GoogleFonts.raleway(
+                                    fontWeight: FontWeight.w400, fontSize: 16)),
+                          ],
                         ),
                         const SizedBox(height: 24),
                         Text(
@@ -112,11 +121,15 @@ class Collaborator extends StatelessWidget {
                                 fontWeight: FontWeight.w500, fontSize: 24)),
                         const Padding(padding: EdgeInsets.only(top: 8)),
                         Chip(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           elevation: 24,
                           label: Text(
-                            "MBBS,MS OPTHALMOLOGY PHACO",
+                            "MBBS, MS Opthalmology, Phaco",
                             style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w400, fontSize: 15),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                                color: Theme.of(context).colorScheme.onPrimary),
                           ),
                           shape: const RoundedRectangleBorder(
                               borderRadius:
@@ -132,6 +145,7 @@ class Collaborator extends StatelessWidget {
                           height: 16,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.location_city_sharp),
                             const Padding(padding: EdgeInsets.only(right: 8)),
@@ -144,7 +158,7 @@ class Collaborator extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          "Also contacted for Datasets. Will visit on (17.01.23) and collect it",
+                          "Contacted for the datasets. Recommended the Questionnaire for the application",
                           style: GoogleFonts.raleway(
                               fontWeight: FontWeight.w400, fontSize: 16),
                           maxLines: 2,
@@ -183,11 +197,15 @@ class Collaborator extends StatelessWidget {
                         ),
                         const Padding(padding: EdgeInsets.only(top: 8)),
                         Chip(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           elevation: 24,
                           label: Text(
-                            "MBBS, D.O,Dip.N.B",
+                            "MBBS, D.O, Dip.N.B",
                             style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w400, fontSize: 16),
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16),
                           ),
                           shape: const RoundedRectangleBorder(
                               borderRadius:
@@ -203,6 +221,7 @@ class Collaborator extends StatelessWidget {
                           height: 16,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.location_city_sharp),
                             const Padding(padding: EdgeInsets.only(right: 8)),
@@ -215,7 +234,7 @@ class Collaborator extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          "Provided Datasets",
+                          "Contributed Datasets",
                           style: GoogleFonts.raleway(
                               fontWeight: FontWeight.w400, fontSize: 16),
                           maxLines: 2,

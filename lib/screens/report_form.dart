@@ -1,10 +1,13 @@
 import 'dart:io';
+import 'package:eperimetry_v1/model/report_model.dart';
+import 'package:eperimetry_v1/provider/auth_provider.dart';
 import 'package:eperimetry_v1/screens/report_submission_success.dart';
 import 'package:eperimetry_v1/screens/reports_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ReportFormScreen extends StatefulWidget {
   const ReportFormScreen({Key? key}) : super(key: key);
@@ -115,8 +118,12 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
                       stepColor: Theme.of(context).splashColor,
                       lineColor: Theme.of(context).secondaryHeaderColor,
                       stepReachedAnimationEffect: Curves.easeInOutCubic,
+                      enableStepTapping: false,
+                      direction: Axis.horizontal,
+                      enableNextPreviousButtons: false,
                       numbers: numbers,
                       activeStep: activeStep,
+                      lineLength: 24,
                       onStepReached: (index) {
                         setState(() {
                           activeStep = index;
@@ -126,11 +133,10 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
                     header(),
                     const SizedBox(height: 24.0),
                     Form(
+                        autovalidateMode: AutovalidateMode.disabled,
                         key: _formKey,
                         child: Column(
                           children: [
-                            formElement(activeStep),
-                            const SizedBox(height: 24.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -138,6 +144,8 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
                                 nextButton(),
                               ],
                             ),
+                            const SizedBox(height: 24.0),
+                            formElement(activeStep),
                           ],
                         )),
                   ],
@@ -504,6 +512,7 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
       child: ElevatedButton(
         onPressed: activeStep == maxIndex - 1
             ? () {
+                storeData();
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const SuccessReportScreen()),
@@ -548,5 +557,28 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
             style: GoogleFonts.raleway(),
           ),
         ));
+  }
+
+  void storeData() async {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+    ReportModel report = ReportModel(
+        mainComplaint: mainComplaintController.text.trim(),
+        howLong: howLongController.text.trim(),
+        progressedOverTime: progressedOverTimeController.text.trim(),
+        associatedProblems: associatedProblemsController.text.trim(),
+        durationOfAssociatedProblems: durationOfAssociatedProblemsController.text.trim(),
+        associatedWith: asociatedWithController.text.trim(),
+        exacerbation: exacerbationController.text.trim(),
+        coMorbites: coMorbitesController.text.trim(),
+        family: familyController.text.trim(),
+        doctor: doctorController.text.trim(),
+        medicine: medicineController.text.trim(),
+        longTermMedicine: longTermMedicineController.text.trim(),
+        investigations: investigationsController.text.trim(),
+        diagnosedWith: diagnosedWithController.text.trim(),
+        diagnosedInvestigation: diagnosedInvestigationController.text.trim(),
+        reportID: "",
+        generatedAt: ""
+    );
   }
 }

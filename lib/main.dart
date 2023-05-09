@@ -14,8 +14,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static final _defaultLightColorScheme = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.light);
-  static final _defaultDarkColorScheme = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
+  static final _defaultLightColorScheme = ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.light);
+  static final _defaultDarkColorScheme = ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.dark);
 
   @override
   Widget build(BuildContext context) {
