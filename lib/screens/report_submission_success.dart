@@ -1,7 +1,6 @@
-import 'package:eperimetry_v1/screens/reports_screen.dart';
+import 'package:eperimetry/screens/reports_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SuccessReportScreen extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:eperimetry_v1/provider/auth_provider.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

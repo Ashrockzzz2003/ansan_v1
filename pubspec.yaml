@@ -1,5 +1,5 @@
-name: eperimetry_v1
-description: Glaucoma Detection App
+name: eperimetry
+description: Detect glaucoma early with our app
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

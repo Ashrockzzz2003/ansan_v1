@@ -1,5 +1,5 @@
-import 'package:eperimetry_v1/screens/home_screen.dart';
-import 'package:eperimetry_v1/screens/report_form.dart';
+import 'package:eperimetry/screens/home_screen.dart';
+import 'package:eperimetry/screens/report_form.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -63,7 +63,7 @@ class _ReportScreenState extends State<ReportScreen> {
               MaterialPageRoute(
                   builder: (context) => const HomeScreen()));
               },
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back_ios_new),
             ),
           ),
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eperimetry_v1/model/user_model.dart';
-import 'package:eperimetry_v1/screens/otp_screen.dart';
-import 'package:eperimetry_v1/util/toast_message.dart';
+import 'package:eperimetry/model/user_model.dart';
+import 'package:eperimetry/screens/otp_screen.dart';
+import 'package:eperimetry/util/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

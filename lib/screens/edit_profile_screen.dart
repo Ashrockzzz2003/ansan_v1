@@ -1,10 +1,10 @@
-import 'package:eperimetry_v1/model/user_model.dart';
-import 'package:eperimetry_v1/provider/auth_provider.dart';
-import 'package:eperimetry_v1/screens/home_screen.dart';
+import 'package:eperimetry/model/user_model.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:eperimetry_v1/util/helper_functions.dart';
+import 'package:eperimetry/util/helper_functions.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);

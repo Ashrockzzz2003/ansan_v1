@@ -1,13 +1,17 @@
-import 'package:eperimetry_v1/provider/auth_provider.dart';
-import 'package:eperimetry_v1/screens/welcome_screen.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/home_screen.dart';
+import 'package:eperimetry/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -42,5 +46,21 @@ class MyApp extends StatelessWidget {
           }
       ),
     );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: true);
+
+    if (ap.isSignedIn) {
+      return const HomeScreen();
+    }
+    else {
+      return const WelcomeScreen();
+    }
   }
 }

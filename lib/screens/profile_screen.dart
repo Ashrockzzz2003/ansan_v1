@@ -1,11 +1,11 @@
-import 'package:eperimetry_v1/provider/auth_provider.dart';
-import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
-import 'package:eperimetry_v1/screens/reports_screen.dart';
-import 'package:eperimetry_v1/screens/welcome_screen.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/edit_profile_screen.dart';
+import 'package:eperimetry/screens/reports_screen.dart';
+import 'package:eperimetry/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:eperimetry_v1/util/helper_functions.dart';
+import 'package:eperimetry/util/helper_functions.dart';
 
 class ProfileScreeen extends StatefulWidget {
   const ProfileScreeen({Key? key}) : super(key: key);

@@ -12,7 +12,7 @@ class Collaborator extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back_ios_new),
           ),
         ),
         body: ListView(
@@ -66,22 +66,29 @@ class Collaborator extends StatelessWidget {
                           height: 16,
                         ),
                         Text("Opthamologist and Retinal Surgeon",
+                            textAlign: TextAlign.center,
                             style: GoogleFonts.raleway(
                                 fontWeight: FontWeight.w500, fontSize: 16)),
                         const SizedBox(
                           height: 16,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.location_city_sharp),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text("Ponnamal Duraisamy Eye Hospital",
-                                style: GoogleFonts.raleway(
-                                    fontWeight: FontWeight.w400, fontSize: 16)),
-                          ],
+                        Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.location_city_sharp),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text("Ponnamal Duraisamy\nEye Hospital",
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.raleway(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16)),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 24),
                         Text(
@@ -139,6 +146,7 @@ class Collaborator extends StatelessWidget {
                           height: 16,
                         ),
                         Text("Refractive and Glaucoma Surgeon",
+                            textAlign: TextAlign.center,
                             style: GoogleFonts.raleway(
                                 fontWeight: FontWeight.w500, fontSize: 16)),
                         const SizedBox(
@@ -215,6 +223,7 @@ class Collaborator extends StatelessWidget {
                           height: 16,
                         ),
                         Text("Opthamology and Glaucoma services",
+                            textAlign: TextAlign.center,
                             style: GoogleFonts.raleway(
                                 fontWeight: FontWeight.w500, fontSize: 16)),
                         const SizedBox(

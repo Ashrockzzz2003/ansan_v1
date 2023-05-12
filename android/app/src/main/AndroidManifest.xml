@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.eperimetry_v1">
+    package="com.example.eperimetry">
    <application
-        android:label="eperimetry_v1"
+        android:label="eperimetry"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

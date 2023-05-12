@@ -1,11 +1,11 @@
-import 'package:eperimetry_v1/provider/auth_provider.dart';
-import 'package:eperimetry_v1/screens/authors.dart';
-import 'package:eperimetry_v1/screens/collaborators.dart';
-import 'package:eperimetry_v1/screens/developers.dart';
-import 'package:eperimetry_v1/screens/edit_profile_screen.dart';
-import 'package:eperimetry_v1/screens/profile_screen.dart';
-import 'package:eperimetry_v1/screens/reports_screen.dart';
-import 'package:eperimetry_v1/screens/welcome_screen.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/authors.dart';
+import 'package:eperimetry/screens/collaborators.dart';
+import 'package:eperimetry/screens/developers.dart';
+import 'package:eperimetry/screens/edit_profile_screen.dart';
+import 'package:eperimetry/screens/profile_screen.dart';
+import 'package:eperimetry/screens/reports_screen.dart';
+import 'package:eperimetry/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -184,8 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Collaborator()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Collaborator()));
               },
               child: Card(
                 margin: const EdgeInsets.all(16),
@@ -248,8 +250,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Developers()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Developers()));
               },
               child: Card(
                 margin: const EdgeInsets.all(16),

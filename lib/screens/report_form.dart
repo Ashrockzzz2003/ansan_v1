@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:eperimetry_v1/model/report_model.dart';
-import 'package:eperimetry_v1/provider/auth_provider.dart';
-import 'package:eperimetry_v1/screens/report_submission_success.dart';
-import 'package:eperimetry_v1/screens/reports_screen.dart';
+import 'package:eperimetry/model/report_model.dart';
+import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/report_submission_success.dart';
+import 'package:eperimetry/screens/reports_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:im_stepper/stepper.dart';
@@ -93,7 +93,7 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
               ),
             ),
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back_ios_new),
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => ReportScreen()),
