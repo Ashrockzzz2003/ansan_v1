@@ -48,19 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class AuthWrapper extends StatelessWidget {
-  const AuthWrapper({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final ap = Provider.of<AuthProvider>(context, listen: true);
-
-    if (ap.isSignedIn) {
-      return const HomeScreen();
-    }
-    else {
-      return const WelcomeScreen();
-    }
-  }
-}

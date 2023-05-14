@@ -14,7 +14,7 @@ class ReportModel {
   String investigations;
   String diagnosedWith;
   String diagnosedInvestigation;
-  String reportID;
+  String leftEye;
   String generatedAt;
 
   ReportModel({
@@ -33,8 +33,8 @@ class ReportModel {
       required this.investigations,
       required this.diagnosedWith,
       required this.diagnosedInvestigation,
-      required this.reportID,
-      required this.generatedAt
+      required this.leftEye,
+      required this.generatedAt,
   });
 
   factory ReportModel.fromMap(Map<String, dynamic> map) {
@@ -54,7 +54,7 @@ class ReportModel {
         investigations: map["investigations"] ?? "",
         diagnosedWith: map["diagnosedWith"] ?? "",
         diagnosedInvestigation: map["diagnosedInvestigation"] ?? "",
-        reportID: map["reportID"] ?? "",
+        leftEye: map["leftEye"] ?? "",
         generatedAt: map["generatedAt"] ?? "",
     );
   }
@@ -76,7 +76,7 @@ class ReportModel {
       "investigations": investigations,
       "diagnosedWith": diagnosedWith,
       "diagnosedInvestigation": diagnosedInvestigation,
-      "reportID": reportID,
+      "leftEye": leftEye,
       "generatedAt": generatedAt,
     };
   }

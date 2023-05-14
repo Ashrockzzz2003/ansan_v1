@@ -1,4 +1,5 @@
 import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/util/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (value == null || value.isEmpty) {
       return 'Enter Mobile Number!';
     } else if (value.length != 10) {
-      return 'Please Check Mobile Number!';
+      return 'Please enter a valid 10 digit phone number!';
+    } else if (!RegExp(r'^[0]?[6789]\d{9}$').hasMatch(value)) {
+      return 'Invalid Mobile Number';
     }
     return null;
   }
@@ -33,6 +36,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Provider.of<AuthProvider>(context, listen: true).isLoading;
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      icon: Icon(Icons.login_outlined),
+                      title: Text(
+                        "Login / Register",
+                        style: GoogleFonts.lato(),
+                      ),
+                      elevation: 3,
+                      content: Text(
+                        "Enter your 10-digit valid mobile number. Click on Login. OTP will be sent to your number. Enter it and proceed. Make sure you internet is turned on.",
+                        style: GoogleFonts.raleway(),
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }
+              );
+            },
+            icon: const Icon(Icons.info_outline),
+          )
+        ],
+      ),
       body: isLoading == true
           ? Center(
               child: Column(
@@ -75,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 24,
                         ),
                         Text(
-                          "Register",
+                          "Sign In",
                           style: GoogleFonts.raleway(
                               textStyle: const TextStyle(
                                   fontSize: 32, fontWeight: FontWeight.bold)),
@@ -99,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             });
                           },
                           keyboardType: TextInputType.phone,
-                          style: GoogleFonts.raleway(),
+                          style: GoogleFonts.nunito(),
                           controller: phoneController,
                           validator: _fieldValidator,
                           decoration: InputDecoration(

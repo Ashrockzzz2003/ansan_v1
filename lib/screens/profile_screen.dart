@@ -1,5 +1,6 @@
 import 'package:eperimetry/provider/auth_provider.dart';
 import 'package:eperimetry/screens/edit_profile_screen.dart';
+import 'package:eperimetry/screens/home_screen.dart';
 import 'package:eperimetry/screens/reports_screen.dart';
 import 'package:eperimetry/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,17 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
         title: Text(
           "Profile",
           style: GoogleFonts.raleway(),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
         ),
         actions: [
           IconButton(

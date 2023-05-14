@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eperimetry/model/report_model.dart';
 import 'package:eperimetry/model/user_model.dart';
 import 'package:eperimetry/screens/otp_screen.dart';
 import 'package:eperimetry/util/toast_message.dart';
@@ -142,6 +143,36 @@ class AuthProvider extends ChangeNotifier {
         notifyListeners();
       });
     } on FirebaseAuthException catch (e) {
+      _isLoading = false;
+      showToast(context, e.toString());
+    }
+  }
+
+  // reports is a collection inside every user. add report to collection
+  void saveReportDataToFirebase({
+    required BuildContext context,
+    required ReportModel reportModel,
+    required Function onSuccess,
+  }) async {
+    _isLoading = true;
+    notifyListeners();
+    try {
+      reportModel.generatedAt =
+          DateTime.now().millisecondsSinceEpoch.toString();
+
+      // Uploading to FireStore
+      await _firebaseFirestore
+          .collection("users")
+          .doc(_uID)
+          .collection("reports")
+          .add(reportModel.toMap())
+          .then((value) {
+        onSuccess();
+        _isLoading = false;
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch (e) {
+      _isLoading = false;
       showToast(context, e.toString());
     }
   }
@@ -216,6 +247,14 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
+  Stream<QuerySnapshot> getReportsDataFromFireStore() async* {
+    yield* _firebaseFirestore
+        .collection("users")
+        .doc(_firebaseAuth.currentUser!.uid)
+        .collection("reports")
+        .snapshots();
+  }
+
   // Storing Data Locally
   Future saveUserDataToSP() async {
     SharedPreferences s = await SharedPreferences.getInstance();
@@ -223,10 +262,12 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future getDataFromSP() async {
+    _isLoading = true;
     SharedPreferences s = await SharedPreferences.getInstance();
     String data = s.getString("user_model") ?? "";
     _userModel = UserModel.fromMap(jsonDecode(data));
     _uID = _userModel!.uID;
+    _isLoading = false;
     notifyListeners();
   }
 

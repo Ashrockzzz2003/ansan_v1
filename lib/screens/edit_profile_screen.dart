@@ -64,6 +64,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               slivers: [
                 //AppBar
                 SliverAppBar.medium(
+                  leading: IconButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new),),
                   floating: false,
                   pinned: true,
                   snap: false,

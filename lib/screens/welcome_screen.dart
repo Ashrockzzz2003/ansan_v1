@@ -17,68 +17,93 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      icon: Icon(Icons.support),
+                      title: Text(
+                        "Support",
+                        style: GoogleFonts.lato(),
+                      ),
+                      elevation: 3,
+                      content: Text(
+                        ap.isSignedIn ? "Click on Login to view your dashboard with reports." : "Click on Get Started to register / Login",
+                        style: GoogleFonts.raleway(),
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }
+              );
+            },
+            icon: const Icon(Icons.info_outline),
+          )
+        ],
+      ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 35),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset("assets/image1.webp",),
-                  const SizedBox(height: 20,),
-                  Text(
-                    "ePerimetry",
-                    style: GoogleFonts.raleway(
-                        textStyle: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold
-                        )
-                    ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 35),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset("assets/image1.webp",),
+                const SizedBox(height: 20,),
+                Text(
+                  "ePerimetry",
+                  style: GoogleFonts.raleway(
+                      textStyle: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold
+                      )
                   ),
-                  const SizedBox(height: 10,),
-                  Text(
-                    "Protect your vision, detect glaucoma early with our app",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                        )
-                    ),
+                ),
+                const SizedBox(height: 10,),
+                Text(
+                  "Protect your vision, detect glaucoma early with our app",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.raleway(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                      )
                   ),
-                  const SizedBox(height: 20,),
-                  ElevatedButton(
-                    onPressed: () async {
-                      if(ap.isSignedIn == true) {
-                        await ap.getDataFromSP().whenComplete(() => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen())));
-                      }
-                      else {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const RegisterScreen(),
-                        ));
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                      child: Text(
-                        "Get Started",
-                        style: GoogleFonts.raleway(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                        ),
+                ),
+                const SizedBox(height: 20,),
+                ElevatedButton(
+                  onPressed: () async {
+                    if(ap.isSignedIn == true) {
+                      await ap.getDataFromSP().whenComplete(() => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen())));
+                    }
+                    else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RegisterScreen(),
+                          ));
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+                    child: Text(
+                      ap.isSignedIn ? "Login" : "Get Started",
+                      style: GoogleFonts.raleway(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          )
-        ),
+          ),
+        )
       ),
     );
   }

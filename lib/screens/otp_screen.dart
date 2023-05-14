@@ -61,7 +61,7 @@ class _OTPScreenState extends State<OTPScreen> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: IconButton(
-                                icon: const Icon(Icons.arrow_back),
+                                icon: const Icon(Icons.arrow_back_ios_new),
                                 onPressed: () {
                                   goBack();
                                   Navigator.of(context).pushAndRemoveUntil(

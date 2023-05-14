@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:eperimetry/model/report_model.dart';
 import 'package:eperimetry/provider/auth_provider.dart';
+import 'package:eperimetry/screens/home_screen.dart';
 import 'package:eperimetry/screens/report_submission_success.dart';
 import 'package:eperimetry/screens/reports_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class ReportFormScreen extends StatefulWidget {
   const ReportFormScreen({Key? key}) : super(key: key);
@@ -24,6 +27,26 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
   void initState() {
     super.initState();
     imagePicker = ImagePicker();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    mainComplaintController.dispose();
+    howLongController.dispose();
+    progressedOverTimeController.dispose();
+    associatedProblemsController.dispose();
+    durationOfAssociatedProblemsController.dispose();
+    asociatedWithController.dispose();
+    exacerbationController.dispose();
+    coMorbitesController.dispose();
+    familyController.dispose();
+    doctorController.dispose();
+    medicineController.dispose();
+    longTermMedicineController.dispose();
+    investigationsController.dispose();
+    diagnosedWithController.dispose();
+    diagnosedInvestigationController.dispose();
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -75,86 +98,94 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading =
+        Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: CustomScrollView(
-        slivers: [
-          //AppBar
-          SliverAppBar.large(
-            floating: false,
-            pinned: true,
-            snap: false,
-            centerTitle: true,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              title: Text(
-                "Report Questionnaire",
-                style: GoogleFonts.raleway(),
-              ),
-            ),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new),
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => ReportScreen()),
-                    (route) => false);
-              },
-            ),
-          ),
-
-          // main App UI
-          SliverToBoxAdapter(
-            child: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    NumberStepper(
-                      activeStepColor: Theme.of(context).primaryIconTheme.color,
-                      activeStepBorderColor:
-                          Theme.of(context).secondaryHeaderColor,
-                      stepColor: Theme.of(context).splashColor,
-                      lineColor: Theme.of(context).secondaryHeaderColor,
-                      stepReachedAnimationEffect: Curves.easeInOutCubic,
-                      enableStepTapping: false,
-                      direction: Axis.horizontal,
-                      enableNextPreviousButtons: false,
-                      numbers: numbers,
-                      activeStep: activeStep,
-                      lineLength: 24,
-                      onStepReached: (index) {
-                        setState(() {
-                          activeStep = index;
-                        });
-                      },
+      body: isLoading == true
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : CustomScrollView(
+              slivers: [
+                //AppBar
+                SliverAppBar.large(
+                  floating: false,
+                  pinned: true,
+                  snap: false,
+                  centerTitle: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: Text(
+                      "Report Questionnaire",
+                      style: GoogleFonts.raleway(),
                     ),
-                    header(),
-                    const SizedBox(height: 24.0),
-                    Form(
-                        autovalidateMode: AutovalidateMode.disabled,
-                        key: _formKey,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                previousButton(),
-                                nextButton(),
-                              ],
-                            ),
-                            const SizedBox(height: 24.0),
-                            formElement(activeStep),
-                          ],
-                        )),
-                  ],
+                  ),
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new),
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => ReportScreen()),
+                          (route) => false);
+                    },
+                  ),
                 ),
-              ),
+
+                // main App UI
+                SliverToBoxAdapter(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          NumberStepper(
+                            activeStepColor:
+                                Theme.of(context).primaryIconTheme.color,
+                            activeStepBorderColor:
+                                Theme.of(context).secondaryHeaderColor,
+                            stepColor: Theme.of(context).splashColor,
+                            lineColor: Theme.of(context).secondaryHeaderColor,
+                            stepReachedAnimationEffect: Curves.easeInOutCubic,
+                            enableStepTapping: false,
+                            direction: Axis.horizontal,
+                            enableNextPreviousButtons: false,
+                            numbers: numbers,
+                            activeStep: activeStep,
+                            lineLength: 24,
+                            onStepReached: (index) {
+                              setState(() {
+                                activeStep = index;
+                              });
+                            },
+                          ),
+                          header(),
+                          const SizedBox(height: 24.0),
+                          Form(
+                              autovalidateMode: AutovalidateMode.disabled,
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      previousButton(),
+                                      nextButton(),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 24.0),
+                                  formElement(activeStep),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -388,7 +419,7 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
                                 imageQuality: 50,
                                 preferredCameraDevice: CameraDevice.front,
                               );
-                              setState(() {
+                              setState(() async {
                                 if (image != null) {
                                   _image = File(image.path);
                                 }
@@ -505,6 +536,21 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
     }
   }
 
+  Future<String> uploadImage(String title, File image, String uID) async {
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("https://api.imgur.com/3/image"));
+    request.fields["title"] = uID;
+    request.headers['Authorization'] = "Client-ID 15300df0c3ee7a8";
+    var picture =
+        http.MultipartFile.fromBytes('image', (await image.readAsBytes()));
+
+    request.files.add(picture);
+    var response = await request.send();
+    var responseData = await response.stream.toBytes();
+    var result = String.fromCharCodes(responseData);
+    return (jsonDecode(result)['data'])['link'];
+  }
+
   /// Returns the next button.
   Widget nextButton() {
     return Padding(
@@ -513,10 +559,6 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
         onPressed: activeStep == maxIndex - 1
             ? () {
                 storeData();
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const SuccessReportScreen()),
-                    (route) => false);
               }
             : () {
                 if (_formKey.currentState!.validate()) {
@@ -561,12 +603,14 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
 
   void storeData() async {
     final ap = Provider.of<AuthProvider>(context, listen: false);
+    final leftEye = await uploadImage(ap.uID, _image!, ap.uID);
     ReportModel report = ReportModel(
         mainComplaint: mainComplaintController.text.trim(),
         howLong: howLongController.text.trim(),
         progressedOverTime: progressedOverTimeController.text.trim(),
         associatedProblems: associatedProblemsController.text.trim(),
-        durationOfAssociatedProblems: durationOfAssociatedProblemsController.text.trim(),
+        durationOfAssociatedProblems:
+            durationOfAssociatedProblemsController.text.trim(),
         associatedWith: asociatedWithController.text.trim(),
         exacerbation: exacerbationController.text.trim(),
         coMorbites: coMorbitesController.text.trim(),
@@ -577,8 +621,20 @@ class _ReportFormScreenState extends State<ReportFormScreen> {
         investigations: investigationsController.text.trim(),
         diagnosedWith: diagnosedWithController.text.trim(),
         diagnosedInvestigation: diagnosedInvestigationController.text.trim(),
-        reportID: "",
-        generatedAt: ""
+        leftEye: leftEye,
+        generatedAt: "");
+
+    ap.saveReportDataToFirebase(
+      context: context,
+      reportModel: report,
+      onSuccess: () {
+        ap.saveUserDataToSP().then(
+              (value) => Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const SuccessReportScreen()),
+                  (route) => false),
+            );
+      },
     );
   }
 }

@@ -43,7 +43,7 @@ class _SuccessReportScreenState extends State<SuccessReportScreen> {
                   height: 20,
                 ),
                 Text(
-                  "We will assess your information and will let you know soon if you need to get tested for COVID-19.",
+                  "We will assess your information. Do head to reports to see the report once it's generated.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.raleway(fontSize: 16),
                 ),

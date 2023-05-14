@@ -9,6 +9,7 @@ import 'package:eperimetry/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,8 +24,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
+    final isLoading =  Provider.of<AuthProvider>(context, listen: true).isLoading;
 
-    return Scaffold(
+    return isLoading == true ? Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CircularProgressIndicator(),
+          const SizedBox(
+            height: 24,
+          ),
+          Text(
+            "Verifying Login...",
+            style: GoogleFonts.raleway(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                )),
+          )
+        ],
+      ),
+    ) : Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -45,22 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               ap.userSignOut().then(
                     (value) => Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen()),
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen()),
                         (route) => false),
-                  );
+              );
             },
             icon: const Icon(Icons.exit_to_app),
           )
         ],
       ),
-      // floatingActionButtonLocation:
-      // FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.remove_red_eye_sharp),onPressed: (){},
-      //
-      // ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
@@ -100,9 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.raleway(
                     textStyle: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 32,
-                )),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 32,
+                    )),
               ),
             ),
             const SizedBox(
