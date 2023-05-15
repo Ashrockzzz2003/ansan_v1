@@ -229,6 +229,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future getDataFromFireStore() async {
+    _isLoading = true;
     await _firebaseFirestore
         .collection("users")
         .doc(_firebaseAuth.currentUser!.uid)
@@ -245,6 +246,7 @@ class AuthProvider extends ChangeNotifier {
           uID: uID);
       _uID = userModel.uID;
     });
+    _isLoading = false;
   }
 
   Stream<QuerySnapshot> getReportsDataFromFireStore() async* {

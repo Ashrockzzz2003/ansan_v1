@@ -78,7 +78,7 @@ class _OTPScreenState extends State<OTPScreen> {
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
-                              child: Image.asset("assets/image3.webp"),
+                              child: Image.network("https://i.imgur.com/AVlEinI.png"),
                             ),
                             const SizedBox(
                               height: 24,

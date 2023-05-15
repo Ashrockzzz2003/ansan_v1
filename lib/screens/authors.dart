@@ -47,7 +47,7 @@ class Authors extends StatelessWidget {
                       child: Column(
                         children: [
                           const CircleAvatar(
-                            backgroundImage: AssetImage('assets/image2.webp'),
+                            backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                             radius: 48,
                           ),
                           const SizedBox(height: 16),
@@ -104,7 +104,7 @@ class Authors extends StatelessWidget {
                       child: Column(
                         children: [
                           const CircleAvatar(
-                            backgroundImage: AssetImage('assets/image2.webp'),
+                            backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                             radius: 48,
                           ),
                           const SizedBox(height: 16),

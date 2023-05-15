@@ -61,6 +61,27 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      icon: const Icon(Icons.support),
+                      title: Text(
+                        "Support",
+                        style: GoogleFonts.lato(),
+                      ),
+                      elevation: 3,
+                      content: Text( "To Logout: Top-Right icon\nTo View your Profile: Top-Left icon",
+                        style: GoogleFonts.raleway(),
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  });
+            },
+            icon: const Icon(Icons.info_outline),
+          ),
+          IconButton(
             onPressed: () async {
               ap.userSignOut().then(
                     (value) => Navigator.pushAndRemoveUntil(
@@ -101,8 +122,8 @@ class _HomeScreenState extends State<HomeScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/image1.webp",
+            Image.network(
+              "https://i.imgur.com/raO93Yr.png",
               width: 300,
               height: 250,
             ),
@@ -215,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           const CircleAvatar(
-                            backgroundImage: AssetImage('assets/image2.webp'),
+                            backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                             radius: 40,
                           ),
                           const SizedBox(height: 8),
@@ -247,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           const CircleAvatar(
-                            backgroundImage: AssetImage('assets/image2.webp'),
+                            backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                             radius: 40,
                           ),
                           const SizedBox(height: 8),
@@ -281,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           const CircleAvatar(
-                            backgroundImage: AssetImage('assets/image2.webp'),
+                            backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                             radius: 40,
                           ),
                           const SizedBox(height: 8),

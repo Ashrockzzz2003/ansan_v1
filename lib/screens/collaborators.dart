@@ -38,7 +38,7 @@ class Collaborator extends StatelessWidget {
                     child: Column(
                       children: [
                         const CircleAvatar(
-                          backgroundImage: AssetImage('assets/image2.webp'),
+                          backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                           radius: 64,
                         ),
                         const SizedBox(height: 8),
@@ -119,7 +119,7 @@ class Collaborator extends StatelessWidget {
                     child: Column(
                       children: [
                         const CircleAvatar(
-                          backgroundImage: AssetImage('assets/image2.webp'),
+                          backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                           radius: 64,
                         ),
                         const SizedBox(height: 8),
@@ -193,7 +193,7 @@ class Collaborator extends StatelessWidget {
                     child: Column(
                       children: [
                         const CircleAvatar(
-                          backgroundImage: AssetImage('assets/image2.webp'),
+                          backgroundImage: NetworkImage('https://i.imgur.com/SEYvKdB.png'),
                           radius: 64,
                         ),
                         const SizedBox(height: 8),

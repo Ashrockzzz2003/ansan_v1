@@ -77,8 +77,8 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/image6.webp",
+              Image.network(
+                "https://i.imgur.com/Jq0Tp2v.png",
                 width: 240,
               ),
               TextFormField(

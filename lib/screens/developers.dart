@@ -46,7 +46,7 @@ class Developers extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: ListTile(
-                        leading: Image.asset('assets/image2.webp'),
+                        leading: Image.network('https://i.imgur.com/SEYvKdB.png'),
                         title: Text(
                           "Ashwin Narayanan S",
                           style: GoogleFonts.raleway(
@@ -94,7 +94,7 @@ class Developers extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: ListTile(
-                        leading: Image.asset('assets/image2.webp'),
+                        leading: Image.network('https://i.imgur.com/SEYvKdB.png'),
                         title: Text(
                           "Lalith Guptha B",
                           style: GoogleFonts.raleway(
@@ -142,7 +142,7 @@ class Developers extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: ListTile(
-                        leading: Image.asset('assets/image2.webp'),
+                        leading: Image.network('https://i.imgur.com/SEYvKdB.png'),
                         title: Text(
                           "Aravind S",
                           style: GoogleFonts.raleway(
@@ -191,7 +191,7 @@ class Developers extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: ListTile(
-                        leading: Image.asset('assets/image2.webp'),
+                        leading: Image.network('https://i.imgur.com/SEYvKdB.png'),
                         title: Text(
                           "Abirami S",
                           style: GoogleFonts.raleway(

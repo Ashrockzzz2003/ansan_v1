@@ -75,8 +75,8 @@ class _ReportScreenState extends State<ReportScreen> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                Image.asset(
-                  "assets/image7.webp",
+                Image.network(
+                  "https://i.imgur.com/7qhafHg.png",
                   width: 200,
                 ),
                 Padding(

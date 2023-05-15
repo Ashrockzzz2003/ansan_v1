@@ -57,9 +57,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: isLoading == true
-          ? const Center(
-              child: CircularProgressIndicator(),
+          ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(
+              height: 24,
+            ),
+            Text(
+              "Getting to know you...",
+              style: GoogleFonts.raleway(
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                  )),
             )
+          ],
+        ),
+      )
           : CustomScrollView(
               slivers: [
                 //AppBar
@@ -93,8 +108,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     child: Center(
                       child: Column(
                         children: [
-                          Image.asset(
-                            "assets/image4.webp",
+                          Image.network(
+                            "https://i.imgur.com/6fRdWmB.png",
                           ),
                           const SizedBox(
                             height: 20,
@@ -447,6 +462,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   void prefillData() async {
     final ap = Provider.of<AuthProvider>(context, listen: false);
+    await ap.getDataFromFireStore().whenComplete(() => {
+      ap.saveUserDataToSP().whenComplete(() async => {
+        await ap.getDataFromSP().whenComplete(() =>
+            null)
+      })
+    });
     setState(() {
       getPhoneNumber();
       nameController.text = convertToTitleCase(ap.userModel.userName)!;

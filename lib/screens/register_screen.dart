@@ -21,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return 'Enter Mobile Number!';
     } else if (value.length != 10) {
       return 'Please enter a valid 10 digit phone number!';
-    } else if (!RegExp(r'^[0]?[6789]\d{9}$').hasMatch(value)) {
+    } else if (!RegExp(r'^0?[6789]\d{9}$').hasMatch(value)) {
       return 'Invalid Mobile Number';
     }
     return null;
@@ -105,7 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.asset("assets/image2.webp"),
+                          child: Image.network("https://i.imgur.com/SEYvKdB.png"),
                         ),
                         const SizedBox(
                           height: 24,
