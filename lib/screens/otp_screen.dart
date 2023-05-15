@@ -27,6 +27,44 @@ class _OTPScreenState extends State<OTPScreen> {
     final isLoading =
         Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            goBack();
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) =>
+                    const RegisterScreen()),
+                    (route) => false);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      icon: Icon(Icons.login_outlined),
+                      title: Text(
+                        "Login / Register",
+                        style: GoogleFonts.lato(),
+                      ),
+                      elevation: 3,
+                      content: Text(
+                        "6 digit OTP was sent to the number you entered. Please enter it here",
+                        style: GoogleFonts.raleway(),
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }
+              );
+            },
+            icon: const Icon(Icons.info_outline),
+          )
+        ],
+      ),
       body: isLoading == true
           ? Center(
               child: Column(
@@ -58,20 +96,6 @@ class _OTPScreenState extends State<OTPScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: IconButton(
-                                icon: const Icon(Icons.arrow_back_ios_new),
-                                onPressed: () {
-                                  goBack();
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const RegisterScreen()),
-                                      (route) => false);
-                                },
-                              ),
-                            ),
                             Container(
                               width: 500,
                               height: 200,

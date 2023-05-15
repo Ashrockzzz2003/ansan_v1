@@ -103,15 +103,16 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         surfaceTintColor: Theme.of(context).colorScheme.onPrimaryContainer,
         selectedIndex: currentPageIndex,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: const <NavigationDestination>[
           NavigationDestination(
             icon: Icon(Icons.home_filled),
             label: "Home",
           ),
-          NavigationDestination(
-            icon: Icon(Icons.remove_red_eye_rounded),
-            label: "Reports",
-          ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.remove_red_eye_rounded),
+          //   label: "Reports",
+          // ),
           NavigationDestination(
             icon: Icon(Icons.groups_rounded),
             label: "About Us",
@@ -185,25 +186,25 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
-        Center(
-          child: Card(
-            margin: const EdgeInsets.all(16),
-            elevation: 8,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(24))),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Text("Work In Progress",
-                      style: GoogleFonts.raleway(
-                          fontWeight: FontWeight.w500, fontSize: 24)),
-                ),
-              ],
-            ),
-          ),
-        ),
+        // Center(
+        //   child: Card(
+        //     margin: const EdgeInsets.all(16),
+        //     elevation: 8,
+        //     shape: const RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.all(Radius.circular(24))),
+        //     child: Column(
+        //       mainAxisSize: MainAxisSize.min,
+        //       children: <Widget>[
+        //         Padding(
+        //           padding: const EdgeInsets.all(24),
+        //           child: Text("Work In Progress",
+        //               style: GoogleFonts.raleway(
+        //                   fontWeight: FontWeight.w500, fontSize: 24)),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         ListView(
           children: [
             Padding(

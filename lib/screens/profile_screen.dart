@@ -83,7 +83,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               TextFormField(
                 enabled: false,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.raleway(
+                  color: Theme.of(context).colorScheme.onSecondaryContainer
+                ),
                 controller: nameController,
                 decoration: InputDecoration(
                   labelText: "Full Name",
@@ -118,7 +120,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               TextFormField(
                 enabled: false,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.raleway(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer
+                ),
                 controller: occupationController,
                 decoration: InputDecoration(
                   labelText: "Occupation",
@@ -153,36 +157,21 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               TextFormField(
                 enabled: false,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.lato(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer
+                ),
                 controller: phoneController,
                 decoration: InputDecoration(
+                  filled: true,
                   labelText: "Mobile Number",
                   prefixIcon: const Icon(Icons.phone),
                   suffixIcon: phoneController.text.length > 9
-                      ? const Icon(Icons.verified_outlined)
+                      ? Icon(
+                      Icons.verified_outlined,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  )
                       : null,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                        color:
-                            Theme.of(context).colorScheme.onPrimaryContainer),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                        color:
-                            Theme.of(context).colorScheme.onPrimaryContainer),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onErrorContainer),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onErrorContainer),
-                  ),
+                  hintText: "Enter Mobile Number",
                   labelStyle: GoogleFonts.raleway(),
                 ),
               ),
@@ -191,7 +180,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               TextFormField(
                 enabled: false,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.raleway(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer
+                ),
                 controller: genderController,
                 decoration: InputDecoration(
                   labelText: "Gender",
@@ -226,7 +217,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               ),
               TextFormField(
                 enabled: false,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.raleway(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer
+                ),
                 controller: ageController,
                 decoration: InputDecoration(
                   labelText: "Age",
@@ -262,7 +255,9 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
               TextFormField(
                 enabled: false,
                 maxLines: null,
-                style: GoogleFonts.raleway(),
+                style: GoogleFonts.raleway(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer
+                ),
                 controller: addressController,
                 decoration: InputDecoration(
                   labelText: "Address",
@@ -388,9 +383,14 @@ class _ProfileScreeenState extends State<ProfileScreeen> {
                                       );
                                     });
                                   },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateColor.resolveWith((states) => Theme.of(context).colorScheme.onErrorContainer)
+                                  ),
                                   child: Text(
                                     "Delete",
-                                    style: GoogleFonts.raleway(),
+                                    style: GoogleFonts.raleway(
+                                      color: Theme.of(context).colorScheme.errorContainer
+                                    ),
                                   ))
                             ],
                           );
